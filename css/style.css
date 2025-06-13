@@ -1,0 +1,1948 @@
+/* Importação das fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
+/* Variáveis CSS (opcional, mas recomendado para consistência) */
+:root {
+    --primary-color: #8B4513; /* Marrom para cachaça/madeira */
+    --secondary-color: #A0522D; /* Tom mais claro */
+    --accent-color: #FFD700;   /* Dourado para destaque */
+    --text-color: #333;
+    --light-text-color: #f4f4f4;
+    --background-light: #f9f9f9;
+    --background-dark: #222;
+    --spacing-unit: 20px;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-unit);
+}
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+
+/* Botões */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: darken(var(--accent-color), 10%); /* Não funciona em CSS puro, seria com SASS/LESS */
+    filter: brightness(90%); /* Alternativa para clarear/escurecer */
+}
+
+.btn-small {
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+/* Espaçamento de Seções */
+.section-padding {
+    padding: 80px 0;
+}
+
+/* Header */
+.main-header {
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    color: var(--light-text-color);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--light-text-color);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: var(--accent-color);
+}
+
+/* Menu Toggle (Mobile) */
+.menu-toggle {
+    display: none; /* Escondido por padrão em desktop */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001; /* Acima do menu */
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background-color: var(--light-text-color);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Altura total da viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text-color);
+    text-align: center;
+    overflow: hidden; /* Para garantir que o vídeo/imagem não transborde */
+}
+
+.hero-video, .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que o vídeo/imagem cubra o elemento */
+    z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.hero-section::before { /* Overlay escuro para melhorar a legibilidade do texto */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Escurecimento */
+    z-index: -1;
+}
+
+.hero-content {
+    z-index: 1; /* Garante que o conteúdo fique acima do vídeo/imagem */
+    max-width: 800px;
+    padding: var(--spacing-unit);
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: var(--light-text-color); /* Título branco */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    color: var(--light-text-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+/* About Brief Section */
+.about-brief {
+    text-align: center;
+    background-color: var(--background-light);
+}
+
+/* Featured Products Section */
+.featured-products {
+    background-color: var(--background-dark);
+    color: var(--light-text-color);
+    text-align: center;
+}
+
+.featured-products h2 {
+    color: var(--accent-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-unit);
+    margin-top: 40px;
+}
+
+.product-item {
+    background-color: #333;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: 200px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-item h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.product-item p {
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 60px 0 20px;
+}
+
+.main-footer .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 0.95em;
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+.footer-section .social-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    filter: invert(1); /* Deixa os ícones brancos */
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    font-size: 0.85em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Esconde o menu fora da tela */
+        width: 70%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out;
+    }
+
+    .main-nav.active {
+        right: 0; /* Mostra o menu */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-nav ul li {
+        margin: 20px 0;
+    }
+
+    .menu-toggle {
+        display: flex; /* Mostra o ícone do menu em mobile */
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    .featured-products .product-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
+/* --- */
+/* Estilos para a Página Sobre Nós */
+/* --- */
+
+.page-hero {
+    position: relative;
+    height: 60vh; /* Altura um pouco menor que a hero da Home */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text-color);
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 80px; /* Para não ficar atrás do header fixo */
+}
+
+.page-hero::before { /* Overlay escuro */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: var(--spacing-unit);
+}
+
+.page-hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--light-text-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.page-hero-content p {
+    font-size: 1.3em;
+    color: var(--light-text-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.lead-text {
+    font-size: 1.25em;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+/* Nossa História */
+.our-story .story-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    gap: var(--spacing-unit);
+}
+
+.our-story .story-block:last-child {
+    margin-bottom: 0;
+}
+
+.our-story .story-block.reverse {
+    flex-direction: row-reverse; /* Inverte a ordem para imagem à direita */
+}
+
+.our-story .story-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.our-story .story-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.our-story .story-text {
+    flex: 2;
+}
+
+.our-story .story-text h3 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.our-story .story-text p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+/* Nossos Valores */
+.our-values {
+    background-color: var(--background-dark); /* Fundo escuro */
+    color: var(--light-text-color);
+}
+
+.our-values h2 {
+    color: var(--accent-color); /* Título dourado */
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-unit);
+    margin-top: 40px;
+}
+
+.value-item {
+    background-color: #333; /* Fundo mais escuro para os itens */
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.value-item h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.value-item p {
+    color: #bbb;
+    font-size: 1em;
+}
+
+/* Seção de Equipe (Opcional) */
+.our-team .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-unit);
+    margin-top: 40px;
+}
+
+.team-member {
+    background-color: #fff;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Imagem redonda */
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color);
+}
+
+.team-member h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.6em;
+}
+
+.team-member p {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+
+.member-bio {
+    font-size: 0.85em;
+    color: #888;
+}
+
+/* Seção de Chamada para Ação (CTA) */
+.cta-section {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Responsividade para Sobre Nós */
+@media (max-width: 768px) {
+    .page-hero {
+        height: 50vh;
+        margin-top: 70px;
+    }
+    .page-hero-content h1 {
+        font-size: 2.5em;
+    }
+    .page-hero-content p {
+        font-size: 1em;
+    }
+
+    .our-story .story-block {
+        flex-direction: column; /* Empilha imagem e texto em mobile */
+        text-align: center;
+    }
+
+    .our-story .story-block.reverse {
+        flex-direction: column; /* Mantém empilhado mesmo com reverse */
+    }
+
+    .our-story .story-image {
+        min-width: unset; /* Remove largura mínima */
+        width: 80%; /* Ajusta largura da imagem */
+        margin: 0 auto 20px;
+    }
+
+    .our-story .story-text {
+        flex: auto;
+    }
+
+    .values-grid, .team-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero-content h1 {
+        font-size: 2em;
+    }
+    .page-hero-content p {
+        font-size: 0.9em;
+    }
+    .lead-text {
+        font-size: 1em;
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Produtos */
+/* --- */
+
+.products-intro {
+    background-color: var(--background-light);
+}
+
+.product-category h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    font-size: 2.8em;
+    position: relative;
+}
+
+.product-category h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Reutilizando .product-grid e .product-item do index.html */
+/* Se precisar de estilos específicos para a página de produtos, crie novas classes */
+.product-category .product-grid {
+    margin-top: 0; /* Remove a margem superior padrão do grid de destaque */
+}
+
+/* Opcional: Efeito hover mais forte para produtos */
+.product-category .product-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Fundo para as seções alternadas */
+.bg-light-gray {
+    background-color: var(--background-light);
+}
+
+/* Responsividade para Produtos (já está bem coberta pelo grid) */
+/* O grid-template-columns: repeat(auto-fit, minmax(Xpx, 1fr)); cuida da maioria */
+
+/* --- */
+/* Estilos para Páginas de Detalhe de Produto */
+/* --- */
+
+.product-detail-hero {
+    padding-top: 120px; /* Espaço para o header fixo */
+    padding-bottom: var(--spacing-unit);
+}
+
+.product-detail-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    gap: 40px;
+    align-items: flex-start; /* Alinha o topo do conteúdo */
+    background-color: #fff;
+    padding: var(--spacing-unit) * 2;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.back-to-products {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.back-to-products:hover {
+    color: var(--secondary-color);
+}
+
+.product-detail-gallery {
+    flex: 1;
+    min-width: 300px; /* Garante tamanho mínimo */
+    max-width: 50%; /* Limita a largura para flex */
+    text-align: center;
+}
+
+.main-product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.thumbnail-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.thumbnail-gallery img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.thumbnail-gallery img:hover,
+.thumbnail-gallery img.active {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.product-detail-info {
+    flex: 1.5; /* Ocupa mais espaço */
+    min-width: 300px;
+}
+
+.product-detail-info h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.product-slogan {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.product-price {
+    font-size: 2.2em;
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.product-description h3,
+.product-specs h3,
+.product-video h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.product-specs ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.product-specs ul li {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: #555;
+}
+
+.product-specs ul li strong {
+    color: var(--text-color);
+}
+
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.btn-large {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Produtos Relacionados */
+.related-products h2 {
+    color: var(--primary-color);
+}
+
+/* Responsividade para Detalhe de Produto */
+@media (max-width: 992px) {
+    .product-detail-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-detail-gallery,
+    .product-detail-info {
+        max-width: 100%;
+        min-width: unset;
+    }
+
+    .product-detail-info {
+        text-align: left; /* Mantém o texto da descrição alinhado à esquerda */
+    }
+
+    .product-detail-info h1 {
+        font-size: 2.5em;
+        text-align: center;
+    }
+    .product-slogan, .product-price {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-detail-hero {
+        padding-top: 100px;
+    }
+    .product-detail-content {
+        padding: var(--spacing-unit);
+    }
+    .product-detail-info h1 {
+        font-size: 2em;
+    }
+    .product-price {
+        font-size: 1.8em;
+    }
+    .btn-large {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Contato */
+/* --- */
+
+.contact-section .container {
+    padding-top: var(--spacing-unit) * 2;
+    padding-bottom: var(--spacing-unit) * 2;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    gap: 40px;
+    justify-content: center;
+    background-color: #fff;
+    padding: var(--spacing-unit) * 2;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-info,
+.contact-form-container {
+    flex: 1;
+    min-width: 300px; /* Garante que os blocos não fiquem muito pequenos */
+    padding: 20px;
+}
+
+.contact-info h2,
+.contact-form-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.contact-info p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-right: 15px;
+    width: 30px; /* Garante alinhamento */
+    text-align: center;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.social-contact-links {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.social-contact-links h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.social-contact-links a i {
+    font-size: 2em;
+    color: var(--secondary-color);
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-contact-links a i:hover {
+    color: var(--accent-color);
+}
+
+
+/* Estilos do Formulário */
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.contact-form button.btn {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    display: block;
+    margin-top: 30px;
+}
+
+/* Seção do Mapa */
+.map-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.8em;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden; /* Garante que o iframe respeite o border-radius */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: var(--spacing-unit) * 2; /* Espaço antes do rodapé */
+}
+
+/* Remove padding-top se a classe no-padding-top for usada */
+.no-padding-top {
+    padding-top: 0 !important;
+}
+
+/* Responsividade para Contato */
+@media (max-width: 992px) {
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-info,
+    .contact-form-container {
+        min-width: unset; /* Remove largura mínima */
+        width: 100%; /* Ocupa largura total */
+        text-align: center;
+    }
+
+    .info-item {
+        justify-content: center; /* Centraliza os ícones e texto */
+    }
+
+    .contact-form button.btn {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Processo */
+/* --- */
+
+.process-intro {
+    background-color: var(--background-light);
+}
+
+.process-steps .step-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+    gap: 40px;
+}
+
+.process-steps .step-item:last-child {
+    margin-bottom: 40px; /* Reduz a margem antes do vídeo ou próxima seção */
+}
+
+.process-steps .step-item.reverse {
+    flex-direction: row-reverse; /* Inverte a ordem para imagem à direita */
+}
+
+.process-steps .step-content {
+    flex: 2;
+    padding: 20px;
+}
+
+.process-steps .step-content h3 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 40px; /* Espaço para o número do passo */
+}
+
+/* Numeração dos passos */
+.process-steps .step-content h3::before {
+    content: attr(data-step-number); /* Usar atributo data-step-number */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 1.2em;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Remova o ::before se você já colocou o número no H3 */
+.process-steps .step-content h3:nth-child(1)
+.process-steps .step-content h3:nth-child(2)
+.process-steps .step-content h3:nth-child(3)
+.process-steps .step-content h3:nth-child(4)
+.process-steps .step-content h3:nth-child(5)
+.process-steps .step-content h3:nth-child(6)
+/* Ou use um data-attribute no HTML para cada H3: <h3 data-step-number="1">1. Colheita...</h3> */
+/* Para simplificar, vou manter o HTML com o número direto no título como no exemplo e remover esse ::before */
+/* Se quiser os números em círculos, você pode adicionar um span com a classe "step-number" no HTML e estilizar */
+
+.process-steps .step-image {
+    flex: 1;
+    min-width: 350px;
+    text-align: center;
+}
+
+.process-steps .step-image img {
+    max-width: 100%;
+    height: 300px; /* Altura fixa para as imagens do processo */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.process-video-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.process-video-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* Reutilizando .video-responsive do detalhe do produto */
+
+
+/* Diferenciais de Qualidade */
+.process-differentiators {
+    background-color: var(--background-dark);
+    color: var(--light-text-color);
+}
+
+.process-differentiators h2 {
+    color: var(--accent-color);
+    margin-bottom: 50px;
+}
+
+.differentiator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-unit);
+}
+
+.differentiator-item {
+    background-color: #333;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.differentiator-item:hover {
+    transform: translateY(-10px);
+}
+
+.differentiator-item img {
+    width: 80px;
+    height: 80px;
+    filter: invert(1) saturate(2) hue-rotate(180deg); /* Exemplo para mudar a cor de ícones pretos para um tom azulado/dourado */
+    margin-bottom: 20px;
+}
+
+.differentiator-item h3 {
+    color: var(--accent-color);
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.differentiator-item p {
+    color: #bbb;
+    font-size: 0.95em;
+}
+
+/* Responsividade para Processo */
+@media (max-width: 992px) {
+    .process-steps .step-item {
+        flex-direction: column; /* Empilha imagem e texto em mobile */
+        text-align: center;
+    }
+    .process-steps .step-item.reverse {
+        flex-direction: column; /* Mantém empilhado mesmo com reverse */
+    }
+    .process-steps .step-content {
+        padding: 0;
+    }
+    .process-steps .step-image {
+        min-width: unset;
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    .process-steps .step-image img {
+        height: auto; /* Deixa a altura flexível em mobile */
+    }
+
+    .differentiator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .process-steps .step-content h3 {
+        font-size: 1.8em;
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Galeria */
+/* --- */
+
+.gallery-intro {
+    background-color: var(--background-light);
+}
+
+.image-gallery h2,
+.video-gallery h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    font-size: 2.8em;
+    position: relative;
+}
+
+.image-gallery h2::after,
+.video-gallery h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.gallery-grid,
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-unit);
+}
+
+.gallery-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px; /* Altura fixa para as miniaturas da galeria */
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.05);
+}
+
+.video-item {
+    background-color: #fff;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.video-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* Reutilizando .video-responsive */
+.video-item .video-responsive {
+    margin-bottom: 0; /* Remove a margem inferior extra do vídeo em item de galeria */
+}
+
+/* Responsividade para Galeria */
+@media (max-width: 768px) {
+    .gallery-grid,
+    .video-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .gallery-grid img {
+        height: 200px; /* Ajusta altura para telas menores */
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Galeria */
+/* --- */
+
+.gallery-intro {
+    background-color: var(--background-light);
+}
+
+.image-gallery h2,
+.video-gallery h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    font-size: 2.8em;
+    position: relative;
+}
+
+.image-gallery h2::after,
+.video-gallery h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.gallery-grid,
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-unit);
+}
+
+.gallery-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px; /* Altura fixa para as miniaturas da galeria */
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.05);
+}
+
+.video-item {
+    background-color: #fff;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.video-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* Reutilizando .video-responsive */
+.video-item .video-responsive {
+    margin-bottom: 0; /* Remove a margem inferior extra do vídeo em item de galeria */
+}
+
+/* Responsividade para Galeria */
+@media (max-width: 768px) {
+    .gallery-grid,
+    .video-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .gallery-grid img {
+        height: 200px; /* Ajusta altura para telas menores */
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Visitação */
+/* --- */
+
+.visit-intro {
+    background-color: var(--background-light);
+}
+
+/* O que Esperar */
+.what-to-expect h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    font-size: 2.8em;
+    position: relative;
+}
+
+.what-to-expect h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.expect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-unit);
+    text-align: center;
+}
+
+.expect-item {
+    background-color: #fff;
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.expect-item:hover {
+    transform: translateY(-5px);
+}
+
+.expect-item i {
+    font-size: 3.5em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.expect-item h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.expect-item p {
+    color: #666;
+    font-size: 0.95em;
+}
+
+/* Horários e Agendamento */
+.booking-info h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.8em;
+}
+
+.booking-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.booking-item {
+    background-color: var(--background-light);
+    padding: var(--spacing-unit) * 1.5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%; /* Para não ficar muito grande em desktop */
+    text-align: left;
+}
+
+.booking-item h3 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.booking-item h3 i {
+    font-size: 1.2em;
+    margin-right: 15px;
+    color: var(--accent-color);
+}
+
+.booking-item p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: #555;
+}
+
+.booking-item .btn {
+    margin-top: 20px;
+}
+
+/* Perguntas Frequentes (FAQ) */
+.faq-section {
+    background-color: var(--background-light);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.faq-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    overflow: hidden; /* Para esconder o conteúdo colapsado */
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f0f0f0;
+}
+
+.faq-question i {
+    font-size: 1em;
+    color: var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-question i.fa-chevron-up {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0; /* Começa fechado */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-answer.active {
+    padding: 20px;
+}
+
+
+/* Responsividade para Visitação */
+@media (max-width: 992px) {
+    .expect-grid,
+    .booking-details {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .booking-item {
+        max-width: 100%; /* Ocupa largura total */
+        text-align: center;
+    }
+
+    .booking-item h3 {
+        justify-content: center; /* Centraliza o ícone e título */
+    }
+}
+
+/* --- */
+/* Estilos para a Página de Visitação (Adicionais ou Modificações) */
+/* --- */
+
+.visit-details {
+    background-color: var(--background-light);
+}
+
+.visit-details .details-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.visit-details .detail-item {
+    background-color: #fff;
+    padding: var(--spacing-unit) * 1.5;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 300px;
+    max-width: 48%; /* Ajuste para ter dois itens por linha em desktop */
+    text-align: left; /* Alinhamento do texto */
+}
+
+.visit-details .detail-item h3 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* Alinha o ícone e o texto */
+}
+
+.visit-details .detail-item h3 i {
+    font-size: 1.2em;
+    color: var(--accent-color);
+    margin-right: 15px;
+}
+
+.visit-details .detail-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.visit-details .detail-item ul li {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: #555;
+    display: flex; /* Para alinhar ícone com texto */
+    align-items: center;
+}
+
+.visit-details .detail-item ul li i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.visit-details .detail-item p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: #555;
+}
+
+.visit-details .detail-item p.small-text {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 20px;
+}
+
+/* Galeria de Visitação (reaproveita .gallery-grid e .gallery-grid a img) */
+.visit-gallery h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    font-size: 2.8em;
+    position: relative;
+}
+
+.visit-gallery h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Formulário de Agendamento (reaproveita .contact-form) */
+.visit-booking {
+    background-color: var(--background-light);
+}
+
+.visit-booking h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.8em;
+}
+
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: var(--spacing-unit) * 2;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.booking-form select {
+    appearance: none; /* Remove estilo padrão do sistema operacional */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C146.21L146.2%2C287.01L5.4%2C146.21C-1.8%2C138.81%2C-1.8%2C127.21%2C5.4%2C119.81L119.8%2C5.41L146.2%2C31.81L266.6%2C152.21C273.8%2C159.41%2C287%2C159.41%2C287%2C146.21Z%22%2F%3E%3C%2Fsvg%3E'); /* Seta customizada */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 30px; /* Espaço para a seta */
+}
+
+/* Localização - reaproveita .map-container e estilos relacionados */
+.location-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.8em;
+}
+
+
+/* Responsividade para Visitação */
+@media (max-width: 768px) {
+    .visit-details .details-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .visit-details .detail-item {
+        max-width: 100%; /* Ocupa largura total */
+        text-align: center;
+    }
+
+    .visit-details .detail-item h3 {
+        justify-content: center; /* Centraliza o ícone e título */
+    }
+
+    .visit-details .detail-item ul li {
+        justify-content: center;
+    }
+
+    .booking-form {
+        padding: var(--spacing-unit);
+    }
+}
+
+/* --- */
+/* Estilos Específicos para o Formulário de Agendamento na página de Visitação */
+/* --- */
+
+.booking-form-styled {
+    max-width: 700px; /* Aumenta a largura máxima do formulário */
+    margin: 0 auto;
+    background-color: #fff;
+    padding: var(--spacing-unit) * 2.5; /* Aumenta o padding interno do formulário */
+    border-radius: 10px; /* Levemente mais arredondado */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* Sombra mais destacada */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas para campos em desktop */
+    gap: 30px; /* Aumenta o espaçamento entre os campos */
+}
+
+.booking-form-styled .form-group {
+    margin-bottom: 0; /* Remove a margem inferior padrão do form-group para usar o gap */
+}
+
+.booking-form-styled .form-group label {
+    font-size: 1.1em; /* Texto da label um pouco maior */
+    margin-bottom: 10px; /* Mais espaço entre label e input */
+    color: var(--primary-color); /* Cor da label */
+}
+
+.booking-form-styled input[type="text"],
+.booking-form-styled input[type="email"],
+.booking-form-styled input[type="tel"],
+.booking-form-styled input[type="date"],
+.booking-form-styled input[type="number"],
+.booking-form-styled select,
+.booking-form-styled textarea {
+    width: 100%;
+    padding: 14px 18px; /* Aumenta o padding dos inputs */
+    border: 1px solid #ccc; /* Borda mais suave */
+    border-radius: 6px; /* Borda levemente arredondada */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.05em; /* Tamanho da fonte nos inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-form-styled input:focus,
+.booking-form-styled select:focus,
+.booking-form-styled textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.3); /* Sombra de foco mais visível */
+}
+
+.booking-form-styled textarea {
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    min-height: 120px; /* Altura mínima para a textarea */
+    resize: vertical;
+}
+
+.booking-form-styled button.btn {
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    width: auto; /* Permite que o botão se ajuste ao conteúdo */
+    padding: 15px 40px; /* Aumenta o padding do botão */
+    font-size: 1.2em; /* Aumenta a fonte do botão */
+    margin: 30px auto 0; /* Centraliza o botão e adiciona margem superior */
+    display: block;
+    border-radius: 8px; /* Botão mais arredondado */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Ajustes para a Galeria de Visitação (6 imagens) */
+.visit-gallery .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta o min-width para 3 colunas em tela cheia */
+    gap: 25px; /* Espaçamento entre as imagens */
+}
+
+@media (max-width: 992px) {
+    .booking-form-styled {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        padding: var(--spacing-unit) * 1.5; /* Reduz padding em mobile */
+        gap: 20px; /* Reduz espaçamento em mobile */
+    }
+
+    .booking-form-styled button.btn {
+        width: 100%; /* Botão ocupa 100% da largura em mobile */
+        padding: 12px 25px;
+    }
+
+    .visit-gallery .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste para mobile */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .visit-gallery .gallery-grid {
+        grid-template-columns: 1fr; /* Uma coluna em celulares */
+    }
+}
+
+/* --- */
+/* Estilos Específicos para a Página de Visitação - Formatação de Formulário e Galeria */
+/* --- */
+
+/* Ajustes para o formulário de agendamento */
+.booking-form-styled {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: var(--spacing-unit) * 2; /* Aumenta o padding interno do formulário */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.booking-form-styled .form-group {
+    margin-bottom: 20px; /* Espaçamento entre os grupos de formulário */
+}
+
+.booking-form-styled label {
+    display: block;
+    margin-bottom: 8px; /* Espaçamento entre o label e o input/select/textarea */
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.booking-form-styled input[type="text"],
+.booking-form-styled input[type="email"],
+.booking-form-styled input[type="tel"],
+.booking-form-styled input[type="date"],
+.booking-form-styled input[type="number"],
+.booking-form-styled select,
+.booking-form-styled textarea {
+    width: 100%;
+    padding: 12px 15px; /* Adiciona padding horizontal */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
+}
+
+.booking-form-styled input[type="text"]:focus,
+.booking-form-styled input[type="email"]:focus,
+.booking-form-styled input[type="tel"]:focus,
+.booking-form-styled input[type="date"]:focus,
+.booking-form-styled input[type="number"]:focus,
+.booking-form-styled select:focus,
+.booking-form-styled textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
+}
+
+.booking-form-styled textarea {
+    resize: vertical;
+}
+
+.booking-form-styled button.btn {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    display: block;
+    margin: 30px auto 0; /* Centraliza o botão */
+    text-align: center;
+}
+
+
+/* Estilos para a Galeria de Visitação (para 3 imagens por linha) */
+.visit-gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Mantém flexível */
+    gap: var(--spacing-unit); /* Espaçamento entre as imagens */
+}
+
+/* Força 3 colunas em telas maiores para a galeria de visitação */
+@media (min-width: 992px) {
+    .visit-gallery .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas para desktop */
+    }
+}
+
+/* Altura fixa para as imagens da galeria */
+.visit-gallery .gallery-grid img {
+    width: 100%;
+    height: 250px; /* Ajuste se precisar de outra altura */
+    object-fit: cover; /* Recorta a imagem para preencher o espaço */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.visit-gallery .gallery-grid a:hover img {
+    transform: scale(1.05); /* Efeito de zoom no hover */
+}
