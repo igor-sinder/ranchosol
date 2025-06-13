@@ -1946,3 +1946,59 @@ h3 { font-size: 2em; }
 .visit-gallery .gallery-grid a:hover img {
     transform: scale(1.05); /* Efeito de zoom no hover */
 }
+
+/* --- */
+/* Estilos para os Botões de Ação na Página de Detalhe de Produto */
+/* --- */
+
+.product-actions {
+    display: flex; /* Usa Flexbox para alinhar os itens */
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 30px; /* Espaço acima dos botões */
+    flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas menores */
+    justify-content: flex-start; /* Alinha ao início em desktop */
+}
+
+/* Ajustes para os botões dentro de product-actions */
+.product-actions .btn {
+    flex: 1; /* Permite que os botões cresçam e ocupem o espaço disponível */
+    padding: 15px 25px; /* Ajusta o padding para serem maiores */
+    font-size: 1.1em;
+    text-align: center; /* Garante que o texto dentro do botão esteja centralizado */
+    min-width: 180px; /* Garante um tamanho mínimo para os botões */
+}
+
+.product-actions .btn-primary-action {
+    background-color: var(--primary-color); /* Cor principal do botão de compra */
+    color: var(--light-text-color);
+}
+
+.product-actions .btn-primary-action:hover {
+    background-color: var(--secondary-color);
+}
+
+.product-actions .btn-secondary-action {
+    background-color: transparent; /* Fundo transparente */
+    border: 2px solid var(--primary-color); /* Borda da cor principal */
+    color: var(--primary-color); /* Texto da cor principal */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.product-actions .btn-secondary-action:hover {
+    background-color: var(--primary-color); /* Fundo preenchido no hover */
+    color: var(--light-text-color); /* Texto branco no hover */
+    border-color: var(--primary-color); /* Borda da mesma cor */
+}
+
+/* Responsividade para os botões de ação */
+@media (max-width: 576px) {
+    .product-actions {
+        flex-direction: column; /* Empilha os botões em telas muito pequenas */
+        align-items: center; /* Centraliza os botões empilhados */
+    }
+
+    .product-actions .btn {
+        width: 100%; /* Ocupa a largura total quando empilhado */
+        min-width: unset; /* Remove o min-width para que se ajuste */
+    }
+}
